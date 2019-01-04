@@ -28,7 +28,7 @@ async function runCommandsIfFileChanged(fileToCheck, commands) {
   }
 }
 
-const configResult = cosmiconfig(pkg.name).searchSync();
+const configResult = cosmiconfig('run-if-changed').searchSync();
 
 if (!configResult || configResult.isEmpty) {
   process.exit(0);

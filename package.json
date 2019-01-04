@@ -1,5 +1,5 @@
 {
-  "name": "run-if-changed",
+  "name": "@hkdobrev/run-if-changed",
   "version": "0.1.0",
   "description": "Run a command if a file changes via Git hooks",
   "bin": "index.js",
