@@ -11,10 +11,12 @@ cli
   .version(pkg.version, '-v, --version')
   .parse(process.argv);
 
+const binary = `${__dirname}/bin/git-run-if-changed.sh`;
+
 async function runCommandsIfFileChanged(fileToCheck, commands) {
   const commandsList = Array.isArray(commands) ? commands : [commands];
   const commandsString = commandsList.map(x => `"${x}"`).join(' ');
-  const command = `./bin/git-run-if-changed.sh "${fileToCheck}" ${commandsString}`;
+  const command = `${binary} "${fileToCheck}" ${commandsString}`;
   const response = await exec(command);
   const { stdout, stderr } = response;
   if (stdout) {
