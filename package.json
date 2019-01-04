@@ -19,7 +19,7 @@
     "lint-staged": "^8.1.0"
   },
   "scripts": {
-    "test-ci": "eslint"
+    "test-ci": "eslint ."
   },
   "husky": {
     "hooks": {
