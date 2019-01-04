@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 const cli = require('commander');
 const util = require('util');
 const process = require('process');
@@ -12,7 +11,8 @@ cli
   .version(pkg.version, '-v, --version')
   .parse(process.argv);
 
-async function runCommandsIfFileChanged(fileToCheck, commandsList) {
+async function runCommandsIfFileChanged(fileToCheck, commands) {
+  const commandsList = Array.isArray(commands) ? commands : [commands];
   const commandsString = commandsList.map(x => `"${x}"`).join(' ');
   const command = `./bin/git-run-if-changed.sh "${fileToCheck}" ${commandsString}`;
   const response = await exec(command);
