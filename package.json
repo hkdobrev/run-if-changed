@@ -6,5 +6,9 @@
   "main": "index.js",
   "repository": "https://github.com/hkdobrev/run-if-changed",
   "author": "Haralan Dobrev <hkdobrev@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "cosmiconfig": "^5.0.7"
+  }
 }
