@@ -20,8 +20,17 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-commit": "./index.js",
+      "post-checkout": "./index.js",
+      "post-merge": "./index.js",
+      "post-rewrite": "./index.js"
     }
+  },
+  "run-if-changed": {
+    "yarn.lock": [
+      "yarn install"
+    ]
   },
   "lint-staged": {
     "*.js": [
