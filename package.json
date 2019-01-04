@@ -1,0 +1,10 @@
+{
+  "name": "run-if-changed",
+  "version": "0.1.0",
+  "description": "Run a command if a file changes via Git hooks",
+  "bin": "index.js",
+  "main": "index.js",
+  "repository": "https://github.com/hkdobrev/run-if-changed",
+  "author": "Haralan Dobrev <hkdobrev@gmail.com>",
+  "license": "MIT"
+}
