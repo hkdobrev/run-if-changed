@@ -26,7 +26,7 @@
     "test": "eslint .",
     "test-ci": "yarn test",
     "preversion": "yarn test",
-    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
+    "postversion": "git push --tags && yarn publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
   },
   "husky": {
     "hooks": {
