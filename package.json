@@ -10,7 +10,10 @@
   "private": false,
   "dependencies": {
     "commander": "^2.19.0",
-    "cosmiconfig": "^5.0.7"
+    "cosmiconfig": "^5.0.7",
+    "execa": "^1.0.0",
+    "npm-which": "^3.0.1",
+    "string-argv": "^0.1.1"
   },
   "devDependencies": {
     "eslint": "^5.11.1",
