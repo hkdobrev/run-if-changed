@@ -1,4 +1,4 @@
-# 🔃 run-if-changed [![Build Status](https://travis-ci.org/hkdobrev/run-if-changed.svg?branch=master)](https://travis-ci.org/hkdobrev/run-if-changed) ![npm version](https://img.shields.io/npm/v/@hkdobrev/run-if-changed.svg)
+# 🔃 run-if-changed [![Build Status](https://travis-ci.org/hkdobrev/run-if-changed.svg?branch=master)](https://travis-ci.org/hkdobrev/run-if-changed) [![npm version](https://img.shields.io/npm/v/@hkdobrev/run-if-changed.svg)](https://www.npmjs.com/package/@hkdobrev/run-if-changed)
 
 Run a command if a file changes via Git hooks.
 Useful for lock files or build systems to keep dependencies and generated files up to date when changing branches, pulling or commiting.
