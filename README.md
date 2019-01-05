@@ -70,7 +70,17 @@ Configuration should be an object where each key is a file or directory mathed b
 
 ## What commands are supported?
 
-For now, only globally available commands are allowed. PRs welcome so local scripts are used first.
+Supported are any executables installed locally or globally via `npm` or Yarn as well as any executable from your `$PATH`.
+
+> Using globally installed scripts is discouraged, since run-if-changed may not work for someone who doesn't have it installed.
+
+`run-if-changed` is using [npm-which](https://github.com/timoxley/npm-which) to locate locally installed scripts. So in your `.run-if-changedrc` you can write:
+
+```json
+{
+  "src": "webpack"
+}
+```
 
 Sequences of commands are supported. Pass an array of commands instead of a single one and they will run sequentially.
 

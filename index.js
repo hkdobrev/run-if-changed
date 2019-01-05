@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const cli = require('commander');
-const util = require('util');
 const process = require('process');
 const cosmiconfig = require('cosmiconfig');
-const exec = util.promisify(require('child_process').exec);
+const execa = require('execa');
+const findBinary = require('./find-binary');
 const pkg = require('./package.json');
 
 cli
@@ -13,21 +13,15 @@ cli
 
 const binary = `${__dirname}/bin/git-run-if-changed.sh`;
 
-async function runCommandsIfFileChanged(fileToCheck, commands) {
+function runCommandsIfFileChanged(fileToCheck, commands) {
   const commandsList = Array.isArray(commands) ? commands : [commands];
-  const commandsString = commandsList.map(x => `"${x}"`).join(' ');
-  const command = `${binary} "${fileToCheck}" ${commandsString}`;
-  const response = await exec(command);
-  const { stdout, stderr } = response;
-  if (stdout) {
-    console.log(stdout);
-  }
-  if (response instanceof Error) {
-    console.error('There was an error executing script:');
-  }
-  if (stderr) {
-    console.error(stderr);
-  }
+  const commandsListResolved = commandsList.map((cmd) => {
+    const { binaryPath, args: binaryArgs } = findBinary(cmd);
+
+    return [binaryPath].concat(binaryArgs).join(' ');
+  });
+  const args = [fileToCheck].concat(commandsListResolved);
+  execa(binary, args).stdout.pipe(process.stdout);
 }
 
 const configResult = cosmiconfig('run-if-changed').searchSync();
