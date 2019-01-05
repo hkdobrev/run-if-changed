@@ -11,5 +11,7 @@ function resolveCommand(command) {
 
 module.exports = function runIfFileChanged(fileToCheck, commandsList) {
   const args = [fileToCheck].concat(commandsList.map(resolveCommand));
-  execa(binary, args).stdout.pipe(process.stdout);
+  const command = execa(binary, args);
+  command.stdout.pipe(process.stdout);
+  command.stderr.pipe(process.stderr);
 };
