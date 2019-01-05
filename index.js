@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 const cli = require('commander');
-const process = require('process');
-const cosmiconfig = require('cosmiconfig');
 const execa = require('execa');
-const findBinary = require('./find-binary');
+const config = require('./src/config');
+const findBinary = require('./src/find-binary');
 const pkg = require('./package.json');
 
 cli
@@ -23,14 +22,6 @@ function runCommandsIfFileChanged(fileToCheck, commands) {
   const args = [fileToCheck].concat(commandsListResolved);
   execa(binary, args).stdout.pipe(process.stdout);
 }
-
-const configResult = cosmiconfig('run-if-changed').searchSync();
-
-if (!configResult || configResult.isEmpty) {
-  process.exit(0);
-}
-
-const { config } = configResult;
 
 Object.entries(config).forEach(([file, commands]) => {
   if (commands.length === 0) {
