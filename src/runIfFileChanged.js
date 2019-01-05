@@ -1,5 +1,5 @@
 const execa = require('execa');
-const findBinary = require('./find-binary');
+const findBinary = require('./findBinary');
 
 const binary = `${__dirname}/../bin/git-run-if-changed.sh`;
 

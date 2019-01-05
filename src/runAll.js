@@ -1,4 +1,4 @@
-const runIfFileChanged = require('./run-if-file-changed');
+const runIfFileChanged = require('./runIfFileChanged');
 
 function runCommandsForFile(file, commands) {
   const commandsList = Array.isArray(commands) ? commands : [commands].filter();

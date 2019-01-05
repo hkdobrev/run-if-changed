@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const cliInit = require('./src/cli-init');
-const configLoad = require('./src/config-load');
-const runAll = require('./src/run-all');
+const cliInit = require('./src/cliInit');
+const configLoad = require('./src/configLoad');
+const runAll = require('./src/runAll');
 
 cliInit();
 runAll(configLoad());
