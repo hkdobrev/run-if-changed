@@ -27,7 +27,7 @@ In `package.json`:
 #### Install with Yarn:
 
 ```shell
-yarn add -D husky @hkdobrev/run-if-changed
+yarn add --save-dev husky @hkdobrev/run-if-changed
 ```
 
 ##### Recommended setup:
