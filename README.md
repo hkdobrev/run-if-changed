@@ -138,7 +138,7 @@ Here's example configuration of `run-if-changed`:
 </details>
 
 <details>
-<summary><b>When using Composere:</b></summary>
+<summary><b>When using Composer:</b></summary>
 
 `package.json`:
 
