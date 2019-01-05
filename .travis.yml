@@ -4,6 +4,7 @@ node_js: stable
 branches:
   only:
     - master
+    - /^\d+\.\d+(\.\d+)?(-\S*)?$/
 
 cache:
   yarn: true
