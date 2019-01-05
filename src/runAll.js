@@ -1,7 +1,7 @@
 const runIfFileChanged = require('./runIfFileChanged');
 
 function runCommandsForFile(file, commands) {
-  const commandsList = Array.isArray(commands) ? commands : [commands].filter();
+  const commandsList = Array.isArray(commands) ? commands : [commands].filter(x => !!x);
 
   if (commandsList.length === 0) {
     return;
