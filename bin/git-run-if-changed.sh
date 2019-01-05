@@ -5,7 +5,6 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-
 git diff-tree --name-only --no-commit-id HEAD@{1} HEAD | grep --quiet "$1" 2> /dev/null
 
 if [ $? -eq 0 ]; then
