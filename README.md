@@ -34,7 +34,7 @@ yarn add -D husky @hkdobrev/run-if-changed
 
 ```json
 "run-if-changed": {
-    "yarn.lock": "yarn install"
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
 }
 ```
 
@@ -48,7 +48,7 @@ npm install --save-dev husky @hkdobrev/run-if-changed
 
 ```json
 "run-if-changed": {
-    "package-lock.json": "npm install"
+    "package-lock.json": "npm install --prefer-offline --no-audit"
 }
 ```
 
@@ -100,7 +100,7 @@ Here's example configuration of `run-if-changed`:
 ```json
 {
     "run-if-changed": {
-        "yarn.lock": "yarn install"
+        "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
     }
 }
 ```
@@ -109,7 +109,7 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "yarn.lock": "yarn install"
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
 }
 ```
 </details>
@@ -122,7 +122,7 @@ Here's example configuration of `run-if-changed`:
 ```json
 {
     "run-if-changed": {
-        "package-lock.json": "npm install"
+        "package-lock.json": "npm install --prefer-offline --no-audit"
     }
 }
 ```
@@ -131,7 +131,7 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "package-lock.json": "npm install"
+    "package-lock.json": "npm install --prefer-offline --no-audit"
 }
 ```
 
@@ -145,7 +145,7 @@ Here's example configuration of `run-if-changed`:
 ```json
 {
     "run-if-changed": {
-        "composer.lock": "composer install"
+        "composer.lock": "composer install --ignore-platform-reqs"
     }
 }
 ```
