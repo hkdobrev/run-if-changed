@@ -2,8 +2,8 @@
   "name": "@hkdobrev/run-if-changed",
   "version": "0.2.4",
   "description": "Run a command if a file changes via Git hooks",
-  "bin": "index.js",
-  "main": "index.js",
+  "bin": "run-if-changed.js",
+  "main": "src/runForMatchingPatterns",
   "repository": "https://github.com/hkdobrev/run-if-changed",
   "author": "Haralan Dobrev <hkdobrev@gmail.com>",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "commander": "^2.19.0",
     "cosmiconfig": "^5.0.7",
     "execa": "^1.0.0",
+    "micromatch": "^3.1.10",
     "npm-which": "^3.0.1",
     "string-argv": "^0.1.1"
   },
@@ -26,15 +27,16 @@
     "test": "eslint .",
     "test-ci": "yarn test",
     "preversion": "yarn test",
-    "postversion": "git push --tags && yarn publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
+    "postversion": "git push --tags && yarn publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
+    "run-if-changed": "./run-if-changed.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-commit": "./index.js",
-      "post-checkout": "./index.js",
-      "post-merge": "./index.js",
-      "post-rewrite": "./index.js"
+      "post-commit": "yarn run-if-changed",
+      "post-checkout": "yarn run-if-changed",
+      "post-merge": "yarn run-if-changed",
+      "post-rewrite": "yarn run-if-changed"
     }
   },
   "run-if-changed": {
@@ -49,9 +51,6 @@
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb-base",
-    "rules": {
-      "no-console": "off"
-    }
+    "extends": "airbnb-base"
   }
 }
