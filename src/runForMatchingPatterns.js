@@ -1,8 +1,8 @@
 const matcher = require('./matcher');
 const runCommands = require('./runCommands');
 
-module.exports = function runForChangedFiles(changedFiles, config) {
+module.exports = function runForMatchingPatterns(files, config) {
   Object.entries(config)
-    .filter(([pattern]) => matcher(changedFiles, [pattern]))
+    .filter(([pattern]) => matcher(files, [pattern]))
     .forEach(([, commands]) => runCommands(commands));
 };

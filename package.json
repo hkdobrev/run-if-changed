@@ -3,7 +3,7 @@
   "version": "0.2.4",
   "description": "Run a command if a file changes via Git hooks",
   "bin": "run-if-changed.js",
-  "main": "src/runForChangedFiles.js",
+  "main": "src/runForMatchingPatterns",
   "repository": "https://github.com/hkdobrev/run-if-changed",
   "author": "Haralan Dobrev <hkdobrev@gmail.com>",
   "license": "MIT",
