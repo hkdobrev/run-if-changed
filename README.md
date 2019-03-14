@@ -66,7 +66,7 @@ Check out the [common use cases](#use-cases).
 
 See [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for more details on what formats are supported.
 
-Configuration should be an object where each key is a file or directory mathed by Git  and the value is either a signle command or an array of commands to run if the file have changed since the last Git operation.
+Configuration should be an object where each key is a file or directory mathed by Git  and the value is either a single command or an array of commands to run if the file have changed since the last Git operation.
 
 ## What commands are supported?
 
