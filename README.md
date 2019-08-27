@@ -7,7 +7,7 @@ Inspired by [`lint-staged`](https://github.com/okonet/lint-staged) and recommend
 
 #### State of the project
 
-run-if-changes is functional as-is, but it's still quite basic and rough as it has just been published. So issues, feature requests and pull requests are most welcome!
+run-if-changed is functional as-is, but it's still quite basic and rough as it has just been published. So issues, feature requests and pull requests are most welcome!
 
 ## Installation and setup
 
