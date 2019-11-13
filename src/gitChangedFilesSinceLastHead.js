@@ -5,6 +5,7 @@ function getFilesFromGit() {
     'diff-tree',
     '--name-only',
     '--no-commit-id',
+    '-r',
     'HEAD@{1}',
     'HEAD',
   ]);
