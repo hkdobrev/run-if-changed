@@ -24,23 +24,22 @@
   },
   "scripts": {
     "test": "eslint .",
-    "test-ci": "yarn test",
-    "preversion": "yarn test",
-    "postversion": "git push --tags && yarn publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
+    "preversion": "npm run test",
+    "postversion": "git push --tags && npm run publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
     "run-if-changed": "./run-if-changed.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-commit": "yarn run-if-changed",
-      "post-checkout": "yarn run-if-changed",
-      "post-merge": "yarn run-if-changed",
-      "post-rewrite": "yarn run-if-changed"
+      "post-commit": "npm run run-if-changed",
+      "post-checkout": "npm run run-if-changed",
+      "post-merge": "npm run run-if-changed",
+      "post-rewrite": "npm run run-if-changed"
     }
   },
   "run-if-changed": {
-    "yarn.lock": [
-      "yarn install"
+    "package-lock.json": [
+      "npm install"
     ]
   },
   "lint-staged": {

@@ -1,7 +1,3 @@
-# Logs
-yarn-debug.log*
-yarn-error.log*
-
 # Dependency directories
 node_modules/
 
