@@ -1,3 +1,5 @@
+// This code is adapted from https://git.io/fhsKi
+
 const parseStringArgv = require('string-argv');
 const which = require('npm-which')(process.cwd());
 

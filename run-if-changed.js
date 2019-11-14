@@ -7,4 +7,7 @@ if (changedFiles.length === 0) {
   process.exit(0);
 }
 
-require('./src/runForMatchingPatterns')(changedFiles, config);
+const resolveMatchingPatterns = require('./src/resolveMatchingPatterns');
+const runCommands = require('./src/runCommands');
+
+runCommands(resolveMatchingPatterns(changedFiles, config));
