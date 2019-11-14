@@ -1,6 +1,6 @@
 {
   "name": "@hkdobrev/run-if-changed",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Run a command if a file changes via Git hooks",
   "bin": "run-if-changed.js",
   "main": "src/runForMatchingPatterns",
