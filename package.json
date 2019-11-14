@@ -25,7 +25,7 @@
   "scripts": {
     "test": "eslint .",
     "preversion": "npm run test",
-    "postversion": "git push --tags && npm run publish . --new-version $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
+    "postversion": "git push --tags && git push && hub release create --browse $npm_package_version",
     "run-if-changed": "./run-if-changed.js"
   },
   "husky": {
