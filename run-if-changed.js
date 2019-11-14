@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-require('./src/cliInit')();
-
 const config = require('./src/configLoad')();
 const changedFiles = require('./src/gitChangedFilesSinceLastHead')();
 
