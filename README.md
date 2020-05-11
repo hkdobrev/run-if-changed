@@ -34,7 +34,7 @@ yarn add --save-dev husky @hkdobrev/run-if-changed
 
 ```json
 "run-if-changed": {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
 ```
 
@@ -100,7 +100,7 @@ Here's example configuration of `run-if-changed`:
 ```json
 {
     "run-if-changed": {
-        "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
+        "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
     }
 }
 ```
@@ -109,7 +109,7 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile"
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
 ```
 </details>
@@ -145,7 +145,7 @@ Here's example configuration of `run-if-changed`:
 ```json
 {
     "run-if-changed": {
-        "composer.lock": "composer install --ignore-platform-reqs"
+        "composer.lock": "composer install --ignore-platform-reqs --ansi"
     }
 }
 ```
