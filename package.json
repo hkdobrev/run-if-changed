@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "cosmiconfig": "^5.0.7",
+    "cosmiconfig": "^8.0.0",
     "execa": "^1.0.0",
     "micromatch": "^3.1.10",
     "npm-which": "^3.0.1",
