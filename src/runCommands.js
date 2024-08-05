@@ -9,7 +9,7 @@ function runBinary(command) {
 }
 
 function normaliseCommands(commands) {
-  return Array.isArray(commands) ? commands : [commands].filter(x => !!x);
+  return Array.isArray(commands) ? commands : [commands].filter((x) => !!x);
 }
 
 module.exports = function runCommands(commands) {
