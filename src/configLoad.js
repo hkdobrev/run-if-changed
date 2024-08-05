@@ -1,7 +1,7 @@
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 
 module.exports = function configLoad() {
-  const configResult = cosmiconfig('run-if-changed').searchSync();
+  const configResult = cosmiconfigSync('run-if-changed').search();
 
   if (!configResult || configResult.isEmpty) {
     process.exit(0);

@@ -9,11 +9,11 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "cosmiconfig": "^5.0.7",
-    "execa": "^1.0.0",
+    "cosmiconfig": "^9.0.0",
+    "execa": "^5.1.1",
     "micromatch": "^4.0.7",
     "npm-which": "^3.0.1",
-    "string-argv": "^0.3.0"
+    "string-argv": "^0.3.2"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
