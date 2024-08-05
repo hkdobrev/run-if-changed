@@ -8,6 +8,9 @@
   "author": "Haralan Dobrev <hkdobrev@gmail.com>",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": ">=18 <23"
+  },
   "dependencies": {
     "cosmiconfig": "^9.0.0",
     "execa": "^5.1.1",
