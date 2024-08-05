@@ -16,5 +16,5 @@ function getFilesFromGit() {
 module.exports = function gitChangedFilesSinceLastHead() {
   const changedFiles = getFilesFromGit();
 
-  return changedFiles.split('\n').filter(file => !!file);
+  return changedFiles.split('\n').filter((file) => !!file);
 };

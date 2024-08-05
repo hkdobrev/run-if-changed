@@ -13,7 +13,7 @@ const which = require('npm-which')(process.cwd());
  *      }
  */
 module.exports = function findBinary(commandString) {
-  const [binaryName, ...args] = parseStringArgv(commandString);
+  const [binaryName, ...args] = parseStringArgv.parseArgsStringToArgv(commandString);
 
   /* npm-which tries to resolve the bin in local node_modules/.bin */
   /* and if this fails it look in $PATH */
