@@ -1,5 +1,5 @@
-const execa = require('execa');
-const findBinary = require('./findBinary');
+import execa from 'execa';
+import findBinary from './findBinary';
 
 function runBinary(command) {
   const { binaryPath, args } = command;
@@ -12,6 +12,6 @@ function normaliseCommands(commands) {
   return Array.isArray(commands) ? commands : [commands].filter((x) => !!x);
 }
 
-module.exports = function runCommands(commands) {
+export default (commands) => {
   normaliseCommands(commands).map(findBinary).forEach(runBinary);
 };

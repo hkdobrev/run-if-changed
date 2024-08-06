@@ -1,6 +1,6 @@
-const matcher = require('./matcher');
+import matcher from './matcher';
 
-module.exports = function resolveMatchingPatterns(list, config) {
+export default (list, config) => {
   const commandsToRun = Object.entries(config)
     .filter(([pattern]) => matcher(list, [pattern]))
     .map(([, commands]) => commands)

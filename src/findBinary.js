@@ -1,8 +1,9 @@
 // This code is adapted from https://git.io/fhsKi
 
-const parseStringArgv = require('string-argv');
-const which = require('npm-which')(process.cwd());
+import parseStringArgv from 'string-argv';
+import npmWhich from 'npm-which';
 
+const which = npmWhich(process.cwd());
 /*
  *  Try to locate the binary in node_modules/.bin and if this fails, in $PATH.
  *
@@ -12,7 +13,7 @@ const which = require('npm-which')(process.cwd());
  *        "src": "webpack"
  *      }
  */
-module.exports = function findBinary(commandString) {
+export default (commandString) => {
   const [binaryName, ...args] = parseStringArgv.parseArgsStringToArgv(commandString);
 
   /* npm-which tries to resolve the bin in local node_modules/.bin */

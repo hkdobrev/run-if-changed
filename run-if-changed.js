@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-const config = require('./src/configLoad')();
-const changedFiles = require('./src/gitChangedFilesSinceLastHead')();
+import resolveMatchingPatterns from './src/resolveMatchingPatterns';
+import runCommands from './src/runCommands';
+import configLoad from './src/configLoad';
+import gitChangedFilesSinceLastHead from './src/gitChangedFilesSinceLastHead';
+
+const changedFiles = gitChangedFilesSinceLastHead();
 
 if (changedFiles.length === 0) {
   process.exit(0);
 }
 
-const resolveMatchingPatterns = require('./src/resolveMatchingPatterns');
-const runCommands = require('./src/runCommands');
-
-runCommands(resolveMatchingPatterns(changedFiles, config));
+runCommands(resolveMatchingPatterns(changedFiles, configLoad()));
