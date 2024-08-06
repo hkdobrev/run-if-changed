@@ -15,12 +15,12 @@ In `package.json`:
 
 ```json
 "husky": {
-    "hooks": {
-        "post-commit": "run-if-changed",
-        "post-checkout": "run-if-changed",
-        "post-merge": "run-if-changed",
-        "post-rewrite": "run-if-changed"
-    }
+  "hooks": {
+    "post-commit": "run-if-changed",
+    "post-checkout": "run-if-changed",
+    "post-merge": "run-if-changed",
+    "post-rewrite": "run-if-changed"
+  }
 }
 ```
 
@@ -34,7 +34,7 @@ yarn add --save-dev husky @hkdobrev/run-if-changed
 
 ```json
 "run-if-changed": {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
 ```
 
@@ -48,7 +48,7 @@ npm install --save-dev husky @hkdobrev/run-if-changed
 
 ```json
 "run-if-changed": {
-    "package-lock.json": "npm install --prefer-offline --no-audit"
+  "package-lock.json": "npm install --prefer-offline --no-audit"
 }
 ```
 
@@ -60,9 +60,9 @@ Check out the [common use cases](#use-cases).
 
 ## Configuration
 
-* `run-if-changed` object in your `package.json`
-* `.run-if-changedrc` file in JSON or YML format
-* `run-if-changed.config.js` file in JS format
+- `run-if-changed` object in your `package.json`
+- `.run-if-changedrc` file in JSON or YML format
+- `run-if-changed.config.js` file in JS format
 
 See [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for more details on what formats are supported.
 
@@ -99,9 +99,9 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "run-if-changed": {
-        "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
-    }
+  "run-if-changed": {
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+  }
 }
 ```
 
@@ -109,9 +109,10 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
 ```
+
 </details>
 
 <details>
@@ -121,9 +122,9 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "run-if-changed": {
-        "package-lock.json": "npm install --prefer-offline --no-audit"
-    }
+  "run-if-changed": {
+    "package-lock.json": "npm install --prefer-offline --no-audit"
+  }
 }
 ```
 
@@ -131,7 +132,7 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "package-lock.json": "npm install --prefer-offline --no-audit"
+  "package-lock.json": "npm install --prefer-offline --no-audit"
 }
 ```
 
@@ -144,9 +145,9 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "run-if-changed": {
-        "composer.lock": "composer install --ignore-platform-reqs --ansi"
-    }
+  "run-if-changed": {
+    "composer.lock": "composer install --ignore-platform-reqs --ansi"
+  }
 }
 ```
 
@@ -159,9 +160,9 @@ Here's example configuration of `run-if-changed`:
 
 ```json
 {
-    "run-if-changed": {
-        "Gemfile.lock": "bundle install"
-    }
+  "run-if-changed": {
+    "Gemfile.lock": "bundle install"
+  }
 }
 ```
 
@@ -175,9 +176,9 @@ If you keep database migrations in your repository, you'd usually want to run th
 
 ```json
 {
-    "run-if-changed": {
-        "migrations": "./console db:migrate --allow-no-migration --no-interaction"
-    }
+  "run-if-changed": {
+    "migrations": "./console db:migrate --allow-no-migration --no-interaction"
+  }
 }
 ```
 
@@ -189,9 +190,8 @@ The above example assumes PHP Doctrine migrations.
 
 ```json
 {
-    "run-if-changed": {
-        "src": "yarn build"
-    }
+  "run-if-changed": {
+    "src": "yarn build"
+  }
 }
 ```
-
