@@ -1,4 +1,4 @@
-const execa = require('execa');
+import execa from 'execa';
 
 function getFilesFromGit() {
   const { stdout } = execa.sync('git', [
@@ -13,7 +13,7 @@ function getFilesFromGit() {
   return stdout;
 }
 
-module.exports = function gitChangedFilesSinceLastHead() {
+export default () => {
   const changedFiles = getFilesFromGit();
 
   return changedFiles.split('\n').filter((file) => !!file);

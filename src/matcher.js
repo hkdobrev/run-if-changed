@@ -1,5 +1,3 @@
-const micromatch = require('micromatch');
+import micromatch from 'micromatch';
 
-module.exports = function matcher(changedFiles, patterns) {
-  return micromatch.some(changedFiles, patterns);
-};
+export default (changedFiles, patterns) => micromatch.some(changedFiles, patterns);

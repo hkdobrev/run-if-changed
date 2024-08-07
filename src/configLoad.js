@@ -1,6 +1,6 @@
-const { cosmiconfigSync } = require('cosmiconfig');
+import { cosmiconfigSync } from 'cosmiconfig';
 
-module.exports = function configLoad() {
+export default () => {
   const configResult = cosmiconfigSync('run-if-changed').search();
 
   if (!configResult || configResult.isEmpty) {

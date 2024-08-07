@@ -3,11 +3,12 @@
   "version": "0.5.2",
   "description": "Run a command if a file changes via Git hooks",
   "bin": "run-if-changed.js",
-  "main": "src/runForMatchingPatterns",
+  "exports": "./run-if-changed.js",
   "repository": "https://github.com/hkdobrev/run-if-changed",
-  "author": "Haralan Dobrev <hkdobrev@gmail.com>",
+  "author": "Haralan Dobrev <harry@hkdobrev.com>",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "engines": {
     "node": ">=18 <23"
   },
