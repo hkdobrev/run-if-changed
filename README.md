@@ -112,7 +112,7 @@ Here's example configuration of `run-if-changed`:
 <details open>
 <summary><b>npm</b></summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
@@ -122,7 +122,7 @@ Here's example configuration of `run-if-changed`:
 }
 </code></pre>
 
-`.run-if-changedrc`:
+`.run-if-changedrc`
 
 <pre><code class="language-json">
 {
@@ -135,7 +135,7 @@ Here's example configuration of `run-if-changed`:
 <details>
 <summary><b>Yarn</b></summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
@@ -145,7 +145,7 @@ Here's example configuration of `run-if-changed`:
 }
 </code></pre>
 
-<code>.run-if-changedrc</code>:
+<code>.run-if-changedrc</code>
 
 <pre><code class="language-json">
 {
@@ -158,7 +158,7 @@ Here's example configuration of `run-if-changed`:
 <details>
 <summary><b>Composer</b></summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
@@ -173,7 +173,7 @@ Here's example configuration of `run-if-changed`:
 <details>
 <summary><b>Bundler</b></summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
@@ -192,7 +192,7 @@ If you keep database migrations in your repository, you'd usually want to run th
 <details>
 <summary>Example of running Doctrine migrations when pulling or changing branches</summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
@@ -209,7 +209,7 @@ If you keep database migrations in your repository, you'd usually want to run th
 <details>
 <summary>Example for running build on changing src folder when pulling or changing branches</summary>
 
-<code>package.json</code>:
+<code>package.json</code>
 
 <pre><code class="language-json">
 {
