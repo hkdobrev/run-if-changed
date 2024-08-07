@@ -55,6 +55,8 @@ echo "npm run run-if-changed" > .husky/post-merge
 echo "npm run run-if-changed" > .husky/post-rewrite
 </code></pre>
 
+</details>
+
 <details>
 <summary><b>Just git hooks</b></summary>
 
