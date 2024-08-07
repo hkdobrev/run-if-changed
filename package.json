@@ -30,7 +30,8 @@
     "test": "eslint .",
     "preversion": "npm run test",
     "postversion": "git push --tags && git push && hub release create --browse $npm_package_version",
-    "run-if-changed": "./run-if-changed.js"
+    "run-if-changed": "./run-if-changed.js",
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
