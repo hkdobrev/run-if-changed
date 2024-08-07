@@ -122,7 +122,7 @@ Here's example configuration of `run-if-changed`:
 }
 </code></pre>
 
-`.run-if-changedrc`
+<code>.run-if-changedrc</code>
 
 <pre><code class="language-json">
 {
