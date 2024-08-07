@@ -1,20 +1,5 @@
-import execa from 'execa';
+import { execaSync } from 'execa';
 
-function getFilesFromGit() {
-  const { stdout } = execa.sync('git', [
-    'diff-tree',
-    '--name-only',
-    '--no-commit-id',
-    '-r',
-    'HEAD@{1}',
-    'HEAD',
-  ]);
-
-  return stdout;
-}
-
-export default () => {
-  const changedFiles = getFilesFromGit();
-
-  return changedFiles.split('\n').filter((file) => !!file);
-};
+export default () => execaSync({ lines: true })`git diff-tree --name-only --no-commit-id -r HEAD@{1} HEAD`
+  .stdout
+  .filter((file) => !!file);
