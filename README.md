@@ -12,7 +12,7 @@ run-if-changed is functional as-is, but it's still quite basic and rough as it h
 ## Installation and setup
 
 <details open>
-<summary><b>Install with npm:</b></summary>
+<summary><b>Install with npm</b></summary>
 
 ```shell
 npm install --save-dev husky @hkdobrev/run-if-changed
@@ -28,12 +28,10 @@ npm install --save-dev husky @hkdobrev/run-if-changed
 </details>
 
 <details>
-<summary><b>Install with Yarn:</b></summary>
-
-#### Install with Yarn:
+<summary><b>Install with Yarn</b></summary>
 
 ```shell
-yarn add --save-dev husky @hkdobrev/run-if-changed
+yarn add --dev husky @hkdobrev/run-if-changed
 ```
 
 ##### Recommended setup:
@@ -48,7 +46,7 @@ yarn add --save-dev husky @hkdobrev/run-if-changed
 ### Set up Git hooks
 
 <details open>
-<summary><b>If you use [Husky](https://typicode.github.io/husky/):</b></summary>
+<summary><b>Using [Husky](https://typicode.github.io/husky/)</b></summary>
 
 ```shell
 echo "npm run run-if-changed" > .husky/post-commit
@@ -58,12 +56,12 @@ echo "npm run run-if-changed" > .husky/post-rewrite
 ```
 
 <details>
-<summary><b>Just Git hooks:</b></summary>
+<summary><b>Pure Git hooks:</b></summary>
 ```shell
-echo "npm run run-if-changed" > .git/hooks/post-commit && chmod +x .git/hooks/post-commit
-echo "npm run run-if-changed" > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
-echo "npm run run-if-changed" > .git/hooks/post-merge && chmod +x .git/hooks/post-merge
-echo "npm run run-if-changed" > .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
+echo "npm run run-if-changed" >> .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+echo "npm run run-if-changed" >> .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
+echo "npm run run-if-changed" >> .git/hooks/post-merge && chmod +x .git/hooks/post-merge
+echo "npm run run-if-changed" >> .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
 ```
 </details>
 
@@ -89,7 +87,7 @@ Supported are any executables installed locally or globally via `npm` or Yarn as
 
 > Using globally installed scripts is discouraged, since run-if-changed may not work for someone who doesn't have it installed.
 
-`run-if-changed` is using [npm-which](https://github.com/timoxley/npm-which) to locate locally installed scripts. So in your `.run-if-changedrc` you can write:
+`run-if-changed` is using [execa](https://github.com/sindresorhus/execa) to locate locally installed scripts and run them. So in your `.run-if-changedrc` you can just write and it would use the local version:
 
 ```json
 {
@@ -108,30 +106,7 @@ If you use a dependency manager with a lock file like npm, Yarn, Composer, Bundl
 Here's example configuration of `run-if-changed`:
 
 <details open>
-<summary><b>When using Yarn:</b></summary>
-
-`package.json`:
-
-```json
-{
-  "run-if-changed": {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
-  }
-}
-```
-
-`.run-if-changedrc`:
-
-```json
-{
-  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
-}
-```
-
-</details>
-
-<details>
-<summary><b>When using npm:</b></summary>
+<summary><b>npm:</b></summary>
 
 `package.json`:
 
@@ -154,7 +129,30 @@ Here's example configuration of `run-if-changed`:
 </details>
 
 <details>
-<summary><b>When using Composer:</b></summary>
+<summary><b>Yarn</b></summary>
+
+`package.json`:
+
+```json
+{
+  "run-if-changed": {
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+  }
+}
+```
+
+`.run-if-changedrc`:
+
+```json
+{
+  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+}
+```
+
+</details>
+
+<details>
+<summary><b>Composer:</b></summary>
 
 `package.json`:
 
@@ -169,7 +167,7 @@ Here's example configuration of `run-if-changed`:
 </details>
 
 <details>
-<summary><b>When using Bundler:</b></summary>
+<summary><b>Bundler:</b></summary>
 
 `package.json`:
 
@@ -187,6 +185,9 @@ Here's example configuration of `run-if-changed`:
 
 If you keep database migrations in your repository, you'd usually want to run them when you check out a branch or pull from master.
 
+<details>
+<summary>Example of running Doctrine migrations when pulling or changing branches</summary>
+
 `package.json`:
 
 ```json
@@ -197,16 +198,21 @@ If you keep database migrations in your repository, you'd usually want to run th
 }
 ```
 
-The above example assumes PHP Doctrine migrations.
+</details>
 
 #### Compile sources in a build folder after pulling new code.
+
+<details>
+<summary>Example for running build on changing src folder when pulling or changing branches</summary>
 
 `package.json`:
 
 ```json
 {
   "run-if-changed": {
-    "src": "yarn build"
+    "src": "npm run build"
   }
 }
 ```
+
+</details>
