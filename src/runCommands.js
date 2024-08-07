@@ -1,7 +1,7 @@
 import { execaCommandSync } from 'execa';
 
 const runCommand = (command) => {
-  process.stdout.write(`${command}: \n`);
+  process.stdout.write(`${command}\n`);
   execaCommandSync({
     preferLocal: true,
     stdout: 'inherit',
