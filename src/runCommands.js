@@ -1,5 +1,5 @@
 import execa from 'execa';
-import findBinary from './findBinary';
+import findBinary from './findBinary.js';
 
 function runBinary(command) {
   const { binaryPath, args } = command;

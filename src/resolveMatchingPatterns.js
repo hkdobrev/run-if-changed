@@ -1,4 +1,4 @@
-import matcher from './matcher';
+import matcher from './matcher.js';
 
 export default (list, config) => {
   const commandsToRun = Object.entries(config)

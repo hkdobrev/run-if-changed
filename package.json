@@ -53,6 +53,9 @@
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+      "import/extensions": "off"
+    }
   }
 }
