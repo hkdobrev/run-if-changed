@@ -46,7 +46,7 @@ yarn add --dev husky @hkdobrev/run-if-changed
 ### Set up Git hooks
 
 <details open>
-<summary><b>Using [Husky](https://typicode.github.io/husky/)</b></summary>
+<summary><b>Using <a href="https://typicode.github.io/husky/">Husky</a></b></summary>
 
 ```shell
 echo "npm run run-if-changed" > .husky/post-commit
@@ -56,13 +56,15 @@ echo "npm run run-if-changed" > .husky/post-rewrite
 ```
 
 <details>
-<summary><b>Pure Git hooks:</b></summary>
+<summary><b>Pure Git hooks</b></summary>
+
 ```shell
 echo "npm run run-if-changed" >> .git/hooks/post-commit && chmod +x .git/hooks/post-commit
 echo "npm run run-if-changed" >> .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
 echo "npm run run-if-changed" >> .git/hooks/post-merge && chmod +x .git/hooks/post-merge
 echo "npm run run-if-changed" >> .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
 ```
+
 </details>
 
 ## Why
@@ -106,7 +108,7 @@ If you use a dependency manager with a lock file like npm, Yarn, Composer, Bundl
 Here's example configuration of `run-if-changed`:
 
 <details open>
-<summary><b>npm:</b></summary>
+<summary><b>npm</b></summary>
 
 `package.json`:
 
@@ -152,7 +154,7 @@ Here's example configuration of `run-if-changed`:
 </details>
 
 <details>
-<summary><b>Composer:</b></summary>
+<summary><b>Composer</b></summary>
 
 `package.json`:
 
@@ -167,7 +169,7 @@ Here's example configuration of `run-if-changed`:
 </details>
 
 <details>
-<summary><b>Bundler:</b></summary>
+<summary><b>Bundler</b></summary>
 
 `package.json`:
 
