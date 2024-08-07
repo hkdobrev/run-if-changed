@@ -1,0 +1,8 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+summary {
+  display: list-item !important;
+}
