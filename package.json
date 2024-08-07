@@ -29,7 +29,7 @@
   "scripts": {
     "test": "eslint .",
     "preversion": "npm run test",
-    "postversion": "git push --tags && git push && gh release create --generate-notes $npm_package_version",
+    "postversion": "git push --atomic && gh release create --generate-notes $npm_package_version",
     "run-if-changed": "./run-if-changed.js",
     "prepare": "husky"
   },
