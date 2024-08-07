@@ -18,7 +18,7 @@ run-if-changed is functional as-is, but it's still quite basic and rough as it h
 npm install --save-dev husky @hkdobrev/run-if-changed
 </code></pre>
 
-##### Recommended setup:
+<h5>Recommended setup</h5>
 
 <pre><code class="language-json">
 "run-if-changed": {
@@ -34,7 +34,7 @@ npm install --save-dev husky @hkdobrev/run-if-changed
 yarn add --dev husky @hkdobrev/run-if-changed
 </code></pre>
 
-##### Recommended setup:
+<h5>Recommended setup</h5>
 
 <pre><code class="language-json">
 "run-if-changed": {
