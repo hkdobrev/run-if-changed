@@ -11,18 +11,24 @@ run-if-changed is functional as-is, but it's still quite basic and rough as it h
 
 ## Installation and setup
 
-In `package.json`:
+<details open>
+<summary><b>Install with npm:</b></summary>
+
+```shell
+npm install --save-dev husky @hkdobrev/run-if-changed
+```
+
+##### Recommended setup:
 
 ```json
-"husky": {
-  "hooks": {
-    "post-commit": "run-if-changed",
-    "post-checkout": "run-if-changed",
-    "post-merge": "run-if-changed",
-    "post-rewrite": "run-if-changed"
-  }
+"run-if-changed": {
+  "package-lock.json": "npm install --prefer-offline --no-audit"
 }
 ```
+</details>
+
+<details>
+<summary><b>Install with Yarn:</b></summary>
 
 #### Install with Yarn:
 
@@ -37,20 +43,29 @@ yarn add --save-dev husky @hkdobrev/run-if-changed
   "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
 ```
+</details>
 
-#### Install with npm:
+### Set up Git hooks
+
+<details open>
+<summary><b>If you use [Husky](https://typicode.github.io/husky/):</b></summary>
 
 ```shell
-npm install --save-dev husky @hkdobrev/run-if-changed
+echo "npm run run-if-changed" > .husky/post-commit
+echo "npm run run-if-changed" > .husky/post-checkout
+echo "npm run run-if-changed" > .husky/post-merge
+echo "npm run run-if-changed" > .husky/post-rewrite
 ```
 
-##### Recommended setup:
-
-```json
-"run-if-changed": {
-  "package-lock.json": "npm install --prefer-offline --no-audit"
-}
+<details>
+<summary><b>Just Git hooks:</b></summary>
+```shell
+echo "npm run run-if-changed" > .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+echo "npm run run-if-changed" > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
+echo "npm run run-if-changed" > .git/hooks/post-merge && chmod +x .git/hooks/post-merge
+echo "npm run run-if-changed" > .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
 ```
+</details>
 
 ## Why
 
