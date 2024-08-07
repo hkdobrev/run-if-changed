@@ -14,56 +14,56 @@ run-if-changed is functional as-is, but it's still quite basic and rough as it h
 <details open>
 <summary><b>Install with npm</b></summary>
 
-```shell
+<pre><code class="language-shell">
 npm install --save-dev husky @hkdobrev/run-if-changed
-```
+</code></pre>
 
 ##### Recommended setup:
 
-```json
+<pre><code class="language-json">
 "run-if-changed": {
   "package-lock.json": "npm install --prefer-offline --no-audit"
 }
-```
+</code></pre>
 </details>
 
 <details>
 <summary><b>Install with Yarn</b></summary>
 
-```shell
+<pre><code class="language-shell">
 yarn add --dev husky @hkdobrev/run-if-changed
-```
+</code></pre>
 
 ##### Recommended setup:
 
-```json
+<pre><code class="language-json">
 "run-if-changed": {
   "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
-```
+</code></pre>
 </details>
 
 ### Set up Git hooks
 
 <details open>
-<summary><b>Using <a href="https://typicode.github.io/husky/">Husky</a></b></summary>
+<summary><b>Using <a href="https://typicode.github.io/husky/"><code>husky</code></a></b></summary>
 
-```shell
+<pre><code class="language-shell">
 echo "npm run run-if-changed" > .husky/post-commit
 echo "npm run run-if-changed" > .husky/post-checkout
 echo "npm run run-if-changed" > .husky/post-merge
 echo "npm run run-if-changed" > .husky/post-rewrite
-```
+</code></pre>
 
 <details>
-<summary><b>Pure Git hooks</b></summary>
+<summary><b>Just git hooks</b></summary>
 
-```shell
+<pre><code class="language-shell">
 echo "npm run run-if-changed" >> .git/hooks/post-commit && chmod +x .git/hooks/post-commit
 echo "npm run run-if-changed" >> .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
 echo "npm run run-if-changed" >> .git/hooks/post-merge && chmod +x .git/hooks/post-merge
 echo "npm run run-if-changed" >> .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
-```
+</code></pre>
 
 </details>
 
@@ -89,13 +89,13 @@ Supported are any executables installed locally or globally via `npm` or Yarn as
 
 > Using globally installed scripts is discouraged, since run-if-changed may not work for someone who doesn't have it installed.
 
-`run-if-changed` is using [execa](https://github.com/sindresorhus/execa) to locate locally installed scripts and run them. So in your `.run-if-changedrc` you can just write and it would use the local version:
+`run-if-changed` is using [`execa`](https://github.com/sindresorhus/execa) to locate locally installed scripts and run them. So in your `.run-if-changedrc` you can just write and it would use the local version:
 
-```json
+<pre><code class="language-json">
 {
   "src": "webpack"
 }
-```
+</code></pre>
 
 Sequences of commands are supported. Pass an array of commands instead of a single one and they will run sequentially.
 
@@ -110,76 +110,76 @@ Here's example configuration of `run-if-changed`:
 <details open>
 <summary><b>npm</b></summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "package-lock.json": "npm install --prefer-offline --no-audit"
   }
 }
-```
+</code></pre>
 
 `.run-if-changedrc`:
 
-```json
+<pre><code class="language-json">
 {
   "package-lock.json": "npm install --prefer-offline --no-audit"
 }
-```
+</code></pre>
 
 </details>
 
 <details>
 <summary><b>Yarn</b></summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
   }
 }
-```
+</code></pre>
 
-`.run-if-changedrc`:
+<code>.run-if-changedrc</code>:
 
-```json
+<pre><code class="language-json">
 {
   "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
 }
-```
+</code></pre>
 
 </details>
 
 <details>
 <summary><b>Composer</b></summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "composer.lock": "composer install --ignore-platform-reqs --ansi"
   }
 }
-```
+</code></pre>
 
 </details>
 
 <details>
 <summary><b>Bundler</b></summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "Gemfile.lock": "bundle install"
   }
 }
-```
+</code></pre>
 
 </details>
 
@@ -190,15 +190,15 @@ If you keep database migrations in your repository, you'd usually want to run th
 <details>
 <summary>Example of running Doctrine migrations when pulling or changing branches</summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "migrations": "./console db:migrate --allow-no-migration --no-interaction"
   }
 }
-```
+</code></pre>
 
 </details>
 
@@ -207,14 +207,14 @@ If you keep database migrations in your repository, you'd usually want to run th
 <details>
 <summary>Example for running build on changing src folder when pulling or changing branches</summary>
 
-`package.json`:
+<code>package.json</code>:
 
-```json
+<pre><code class="language-json">
 {
   "run-if-changed": {
     "src": "npm run build"
   }
 }
-```
+</code></pre>
 
 </details>
