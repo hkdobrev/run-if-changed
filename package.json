@@ -47,7 +47,7 @@
     ]
   },
   "lint-staged": {
-    "*.js": "eslint --fix"
+    "*.{js,json}": "eslint --fix"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
