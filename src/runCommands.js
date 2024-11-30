@@ -1,7 +1,7 @@
 import { execaCommandSync } from 'execa';
+import { Listr } from 'listr2';
 
 const runCommand = (command) => {
-  process.stdout.write(`${command}\n`);
   execaCommandSync({
     preferLocal: true,
     stdout: 'inherit',
@@ -10,7 +10,18 @@ const runCommand = (command) => {
 };
 
 export default (commands) => {
-  (Array.isArray(commands) ? commands : [commands])
-    .filter((x) => !!x)
-    .forEach(runCommand);
+  const tasks = new Listr(
+    (Array.isArray(commands) ? commands : [commands])
+      .filter((x) => !!x)
+      .map((command) => ({
+        title: command,
+        task: () => runCommand(command),
+      })),
+    {
+      concurrent: false,
+      renderer: 'simple',
+    }
+  );
+
+  return tasks.run();
 };
