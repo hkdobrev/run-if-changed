@@ -1,1 +1,1 @@
-npm run run-if-changed
+npx run-if-changed

@@ -49,10 +49,10 @@ yarn add --dev husky @hkdobrev/run-if-changed
 <summary><b>Using <a href="https://typicode.github.io/husky/"><code>husky</code></a></b></summary>
 
 <pre><code class="language-shell">
-echo "npm run run-if-changed" > .husky/post-commit
-echo "npm run run-if-changed" > .husky/post-checkout
-echo "npm run run-if-changed" > .husky/post-merge
-echo "npm run run-if-changed" > .husky/post-rewrite
+echo "npx run-if-changed" > .husky/post-commit
+echo "npx run-if-changed" > .husky/post-checkout
+echo "npx run-if-changed" > .husky/post-merge
+echo "npx run-if-changed" > .husky/post-rewrite
 </code></pre>
 
 </details>
@@ -61,10 +61,10 @@ echo "npm run run-if-changed" > .husky/post-rewrite
 <summary><b>Just git hooks</b></summary>
 
 <pre><code class="language-shell">
-echo "npm run run-if-changed" >> .git/hooks/post-commit && chmod +x .git/hooks/post-commit
-echo "npm run run-if-changed" >> .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
-echo "npm run run-if-changed" >> .git/hooks/post-merge && chmod +x .git/hooks/post-merge
-echo "npm run run-if-changed" >> .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
+echo "npx run-if-changed" >> .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+echo "npx run-if-changed" >> .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
+echo "npx run-if-changed" >> .git/hooks/post-merge && chmod +x .git/hooks/post-merge
+echo "npx run-if-changed" >> .git/hooks/post-rewrite && chmod +x .git/hooks/post-rewrite
 </code></pre>
 
 </details>

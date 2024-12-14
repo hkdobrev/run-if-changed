@@ -1,1 +1,1 @@
-lint-staged && npm test
+lint-staged --quiet && npm test
