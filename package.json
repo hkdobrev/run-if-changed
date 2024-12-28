@@ -43,8 +43,8 @@
     }
   },
   "run-if-changed": {
-    "package-lock.json": [
-      "npm install"
+    "package-lock.json|package.json": [
+      "npm install --prefer-offline --no-audit --no-fund"
     ]
   },
   "lint-staged": {

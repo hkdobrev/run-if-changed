@@ -117,7 +117,7 @@ Here's example configuration of `run-if-changed`:
 <pre><code class="language-json">
 {
   "run-if-changed": {
-    "package-lock.json": "npm install --prefer-offline --no-audit"
+    "package-lock.json": "npm install --prefer-offline --no-audit --no-fund"
   }
 }
 </code></pre>
@@ -126,7 +126,7 @@ Here's example configuration of `run-if-changed`:
 
 <pre><code class="language-json">
 {
-  "package-lock.json": "npm install --prefer-offline --no-audit"
+  "package-lock.json": "npm install --prefer-offline --no-audit --no-fund"
 }
 </code></pre>
 
@@ -140,7 +140,7 @@ Here's example configuration of `run-if-changed`:
 <pre><code class="language-json">
 {
   "run-if-changed": {
-    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+    "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always --non-interactive"
   }
 }
 </code></pre>
@@ -149,7 +149,7 @@ Here's example configuration of `run-if-changed`:
 
 <pre><code class="language-json">
 {
-  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always"
+  "yarn.lock": "yarn install --prefer-offline --pure-lockfile --color=always --non-interactive"
 }
 </code></pre>
 
@@ -178,7 +178,7 @@ Here's example configuration of `run-if-changed`:
 <pre><code class="language-json">
 {
   "run-if-changed": {
-    "Gemfile.lock": "bundle install"
+    "Gemfile.lock": "bundle install --prefer-local"
   }
 }
 </code></pre>
