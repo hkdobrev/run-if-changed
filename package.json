@@ -15,7 +15,7 @@
   "dependencies": {
     "cosmiconfig": "^9.0.0",
     "execa": "^9.5.2",
-    "listr2": "^8.2.5",
+    "listr2": "^9.0.0",
     "micromatch": "^4.0.8",
     "string-argv": "^0.3.2"
   },
