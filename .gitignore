@@ -3,3 +3,6 @@ node_modules/
 
 # Optional eslint cache
 .eslintcache
+
+# .DS_Store files
+.DS_Store
