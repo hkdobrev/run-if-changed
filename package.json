@@ -24,10 +24,13 @@
     "eslint-plugin-json": "^4.0.1",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
+    "jest": "^30.3.0",
     "lint-staged": "^16.0.0"
   },
   "scripts": {
-    "test": "eslint .",
+    "lint": "eslint .",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watchAll",
     "preversion": "npm run test",
     "postversion": "git push --atomic && gh release create --generate-notes $npm_package_version",
     "run-if-changed": "./run-if-changed.js",
