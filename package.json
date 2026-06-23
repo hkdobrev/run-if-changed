@@ -4,6 +4,10 @@
   "description": "Run a command if a file changes via Git hooks",
   "bin": "run-if-changed.js",
   "exports": "./run-if-changed.js",
+  "files": [
+    "run-if-changed.js",
+    "src/*.js"
+  ],
   "repository": "https://github.com/hkdobrev/run-if-changed",
   "author": "Haralan Dobrev <harry@hkdobrev.com>",
   "license": "MIT",
