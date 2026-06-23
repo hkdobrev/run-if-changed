@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18, 20, 22, 24 ]
+        node-version: [ 20, 22, 24 ]
     steps:
     - uses: actions/checkout@v7
     - name: Use Node.js ${{ matrix.node-version }}
@@ -17,6 +17,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    # Newer npm avoids the optional native-binding install bug (npm/cli#4828)
+    # that affects oxlint/oxfmt on Node 20.
+    - run: npm install -g npm@latest
     - name: npm install, build, and test
       run: |
         npm ci

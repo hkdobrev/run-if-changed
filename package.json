@@ -10,7 +10,7 @@
   "private": false,
   "type": "module",
   "engines": {
-    "node": ">=18 <25"
+    "node": "^20.19.0 || >=22"
   },
   "dependencies": {
     "cosmiconfig": "^9.0.0",
