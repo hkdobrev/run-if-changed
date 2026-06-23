@@ -20,7 +20,7 @@ export default (commands) => {
     {
       concurrent: false,
       renderer: 'simple',
-    }
+    },
   );
 
   return tasks.run();
