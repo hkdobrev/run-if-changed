@@ -26,7 +26,9 @@
     "oxlint": "^1.71.0"
   },
   "scripts": {
-    "test": "oxlint && oxfmt --check run-if-changed.js src",
+    "test": "oxlint && oxfmt --check run-if-changed.js src && node --test",
+    "test:unit": "node --test",
+    "test:watch": "node --test --watch",
     "lint": "oxlint",
     "format": "oxfmt run-if-changed.js src",
     "preversion": "npm run test",
