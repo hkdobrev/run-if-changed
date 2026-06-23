@@ -12,19 +12,17 @@ jobs:
         node-version: [ 20, 22, 24 ]
     steps:
     - uses: actions/checkout@v7
+    # pnpm version is taken from the "packageManager" field in package.json.
+    - uses: pnpm/action-setup@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    # Newer npm avoids the optional native-binding install bug (npm/cli#4828)
-    # that affects oxlint/oxfmt on Node 20.
-    - run: npm install -g npm@latest
-    - name: npm install, build, and test
+        cache: 'pnpm'
+    - name: Install and test
       run: |
-        npm ci
-        npm run build --if-present
-        npm test
+        pnpm install --frozen-lockfile
+        pnpm test
 
   publish-npm:
     needs: build
@@ -34,14 +32,16 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'npm'
+          cache: 'pnpm'
           registry-url: https://registry.npmjs.org/
-      # Trusted publishing via OIDC requires npm >= 11.5.1; no NPM_TOKEN needed.
+      - run: pnpm install --frozen-lockfile
+      # Publishing uses npm trusted publishing (OIDC, no NPM_TOKEN), which
+      # requires npm >= 11.5.1.
       - run: npm install -g npm@latest
-      - run: npm ci
       - run: npm publish --provenance --access public
 
   publish-gpr:
@@ -53,11 +53,13 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
-          cache: 'npm'
+          node-version: 24
+          cache: 'pnpm'
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

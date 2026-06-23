@@ -13,6 +13,7 @@
   "license": "MIT",
   "private": false,
   "type": "module",
+  "packageManager": "pnpm@11.9.0",
   "engines": {
     "node": "^20.19.0 || >=22"
   },
@@ -20,8 +21,7 @@
     "cosmiconfig": "^9.0.0",
     "execa": "^9.5.2",
     "listr2": "^10.0.0",
-    "micromatch": "^4.0.8",
-    "string-argv": "^0.3.2"
+    "micromatch": "^4.0.8"
   },
   "devDependencies": {
     "husky": "^9.1.7",
@@ -30,28 +30,20 @@
     "oxlint": "^1.71.0"
   },
   "scripts": {
-    "test": "oxlint && oxfmt --check run-if-changed.js src && node --test",
-    "test:unit": "node --test",
+    "test": "oxlint && oxfmt --check run-if-changed.js src e2e && node --test",
+    "test:unit": "node --test 'src/**/*.test.js'",
+    "test:e2e": "node --test 'e2e/**/*.test.js'",
     "test:watch": "node --test --watch",
     "lint": "oxlint",
-    "format": "oxfmt run-if-changed.js src",
-    "preversion": "npm run test",
+    "format": "oxfmt run-if-changed.js src e2e",
+    "preversion": "pnpm test",
     "postversion": "git push --atomic && gh release create --generate-notes $npm_package_version",
     "run-if-changed": "./run-if-changed.js",
     "prepare": "husky"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "npm run run-if-changed",
-      "post-checkout": "npm run run-if-changed",
-      "post-merge": "npm run run-if-changed",
-      "post-rewrite": "npm run run-if-changed"
-    }
-  },
   "run-if-changed": {
-    "package-lock.json": [
-      "npm install --prefer-offline --no-audit --no-fund"
+    "pnpm-lock.yaml": [
+      "pnpm install --prefer-offline"
     ]
   },
   "lint-staged": {

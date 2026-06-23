@@ -7,7 +7,7 @@ Inspired by [`lint-staged`](https://github.com/okonet/lint-staged) and recommend
 
 #### State of the project
 
-run-if-changed is functional as-is, but it's still quite basic and rough as it has just been published. So issues, feature requests and pull requests are most welcome!
+run-if-changed is small and focused, and used in production setups. It's still intentionally minimal, so issues, feature requests and pull requests are most welcome!
 
 ## Installation and setup
 
@@ -83,7 +83,9 @@ Check out the [common use cases](#use-cases).
 
 See [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for more details on what formats are supported.
 
-Configuration should be an object where each key is a file or directory match pattern and the value is either a single command or an array of commands to run if the file have changed since the last Git operation.
+Configuration should be an object where each key is a [micromatch](https://github.com/micromatch/micromatch) pattern matched against the paths of the changed files, and the value is either a single command or an array of commands to run if a matching file has changed since the last Git operation.
+
+Patterns are matched against the full file path, so to match everything inside a directory use a globstar — e.g. `"src/**"`, not `"src"`. A bare directory name only matches a file with that exact path.
 
 ## What commands are supported?
 
@@ -95,11 +97,32 @@ Supported are any executables installed locally or globally via `npm` or Yarn as
 
 <pre><code class="language-json">
 {
-  "src": "webpack"
+  "src/**": "webpack"
 }
 </code></pre>
 
 Sequences of commands are supported. Pass an array of commands instead of a single one and they will run sequentially.
+
+## Monorepos
+
+`run-if-changed` works in a monorepo where a single Git repository holds multiple packages. Give each package its own configuration (a `run-if-changed` key in that package's `package.json`, or a `.run-if-changedrc` next to it) and write the patterns relative to that package:
+
+<pre><code class="language-json">
+// packages/api/package.json
+{
+  "run-if-changed": {
+    "proto/**": "npm run codegen"
+  }
+}
+</code></pre>
+
+When a changed file is found, `run-if-changed` looks for the **nearest** configuration in that file's directory or above it, up to the repository root, and runs the matching commands **with that package's directory as the working directory**. So changing `packages/api/proto/service.proto` runs `npm run codegen` inside `packages/api`.
+
+A few details worth knowing:
+
+- **Nearest config wins.** A file is owned by the closest configuration at or above it; a configuration at the repository root only handles files that no nested package claims.
+- **Inheritance.** A package without its own configuration falls through to the nearest ancestor configuration (up to the root). A `package.json` with no `run-if-changed` key does not stop this search.
+- **Single root lock file.** npm/Yarn/pnpm workspaces usually keep a single lock file at the repository root, so the "install on lock file change" use case stays a **root** configuration (`"pnpm-lock.yaml": "pnpm install"`), not a per-package one. Per-package configurations are best for build, code generation and migrations that belong to one package.
 
 ## Use cases
 
@@ -127,6 +150,29 @@ Here's example configuration of `run-if-changed`:
 <pre><code class="language-json">
 {
   "package-lock.json": "npm install --prefer-offline --no-audit --no-fund"
+}
+</code></pre>
+
+</details>
+
+<details>
+<summary><b>pnpm</b></summary>
+
+<code>package.json</code>
+
+<pre><code class="language-json">
+{
+  "run-if-changed": {
+    "pnpm-lock.yaml": "pnpm install --prefer-offline"
+  }
+}
+</code></pre>
+
+<code>.run-if-changedrc</code>
+
+<pre><code class="language-json">
+{
+  "pnpm-lock.yaml": "pnpm install --prefer-offline"
 }
 </code></pre>
 
@@ -197,7 +243,7 @@ If you keep database migrations in your repository, you'd usually want to run th
 <pre><code class="language-json">
 {
   "run-if-changed": {
-    "migrations": "./console db:migrate --allow-no-migration --no-interaction"
+    "migrations/**": "./console db:migrate --allow-no-migration --no-interaction"
   }
 }
 </code></pre>
@@ -214,7 +260,7 @@ If you keep database migrations in your repository, you'd usually want to run th
 <pre><code class="language-json">
 {
   "run-if-changed": {
-    "src": "npm run build"
+    "src/**": "npm run build"
   }
 }
 </code></pre>

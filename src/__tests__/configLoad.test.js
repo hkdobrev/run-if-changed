@@ -1,4 +1,4 @@
-import { describe, it, beforeEach, afterEach, mock } from 'node:test';
+import { describe, it, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -7,40 +7,38 @@ import { join } from 'node:path';
 import configLoad from '../configLoad.js';
 
 // `configLoad` resolves real config files via cosmiconfig, so each test runs
-// inside an isolated temp directory. A bare package.json makes it a project
-// root, so cosmiconfig's 'project' search strategy stops there and never
-// reaches the real repository above.
+// inside an isolated temp directory. The 'none' search strategy means it only
+// ever inspects the directory it is handed and never walks up into the real
+// repository above.
 
 let dir;
-let originalCwd;
 
 beforeEach(() => {
-  originalCwd = process.cwd();
   dir = mkdtempSync(join(tmpdir(), 'rif-config-'));
-  writeFileSync(join(dir, 'package.json'), '{}\n');
-  process.chdir(dir);
 });
 
 afterEach(() => {
-  process.chdir(originalCwd);
   rmSync(dir, { recursive: true, force: true });
-  mock.restoreAll();
 });
 
 describe('configLoad', () => {
-  it('returns the config discovered by cosmiconfig', () => {
+  it('returns the config defined in the given directory', () => {
     const config = { 'package-lock.json': ['npm install'] };
     writeFileSync(join(dir, '.run-if-changedrc.json'), JSON.stringify(config));
 
-    assert.deepEqual(configLoad(), config);
+    assert.deepEqual(configLoad(dir), config);
   });
 
-  it('exits with code 0 when no config is found', () => {
-    const exit = mock.method(process, 'exit', () => {
-      throw new Error('process.exit called');
-    });
+  it('reads the config from a package.json run-if-changed key', () => {
+    const config = { 'pnpm-lock.yaml': 'pnpm install' };
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({ 'run-if-changed': config }));
 
-    assert.throws(() => configLoad(), /process\.exit called/);
-    assert.deepEqual(exit.mock.calls[0].arguments, [0]);
+    assert.deepEqual(configLoad(dir), config);
+  });
+
+  it('returns null when the directory has no config', () => {
+    writeFileSync(join(dir, 'package.json'), '{}\n');
+
+    assert.equal(configLoad(dir), null);
   });
 });
