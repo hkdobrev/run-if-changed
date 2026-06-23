@@ -1,21 +1,24 @@
-import { execaCommandSync } from 'execa';
+import { execaSync, parseCommandString } from 'execa';
 import { Listr } from 'listr2';
 
-const runCommand = (command) => {
-  execaCommandSync({
+const runCommand = (command, cwd) => {
+  const [file, ...args] = parseCommandString(command);
+
+  execaSync(file, args, {
+    cwd,
     preferLocal: true,
     stdout: 'inherit',
     stderr: 'inherit',
-  })(command);
+  });
 };
 
-export default (commands) => {
+export default (commands, { cwd } = {}) => {
   const tasks = new Listr(
     (Array.isArray(commands) ? commands : [commands])
       .filter((x) => !!x)
       .map((command) => ({
         title: command,
-        task: () => runCommand(command),
+        task: () => runCommand(command, cwd),
       })),
     {
       concurrent: false,

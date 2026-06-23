@@ -1,1 +1,1 @@
-npx run-if-changed
+pnpm run-if-changed

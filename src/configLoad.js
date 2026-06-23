@@ -1,15 +1,17 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
-export default () => {
-  const configResult = cosmiconfigSync('run-if-changed', {
-    searchStrategy: 'project',
-  }).search();
+// A single explorer, reused (and internally cached) across directories. The
+// 'none' search strategy inspects only the directory it is given and never
+// walks up, which lets resolveConfigGroups implement its own repo-root-bounded
+// walk and decide how directories without a config inherit an ancestor's.
+const explorer = cosmiconfigSync('run-if-changed', {
+  searchStrategy: 'none',
+});
 
-  if (!configResult || configResult.isEmpty) {
-    process.exit(0);
-  }
+// Load the run-if-changed config defined directly in `dir`, or null if there
+// is none (or it is empty).
+export default (dir) => {
+  const result = explorer.search(dir);
 
-  const { config } = configResult;
-
-  return config;
+  return result && !result.isEmpty ? result.config : null;
 };
