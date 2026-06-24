@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     # pnpm version is taken from the "packageManager" field in package.json.
-    - uses: pnpm/action-setup@v4
+    - uses: pnpm/action-setup@v6
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
@@ -32,7 +32,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -53,7 +53,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 24
