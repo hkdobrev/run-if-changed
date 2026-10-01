@@ -25,7 +25,7 @@ jobs:
     # pnpm version is taken from the "packageManager" field in package.json.
     - uses: pnpm/action-setup@v6
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
