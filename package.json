@@ -18,7 +18,7 @@
     "node": "^20.19.0 || >=22"
   },
   "dependencies": {
-    "cosmiconfig": "^9.0.0",
+    "cosmiconfig": "^10.0.0",
     "execa": "^9.5.2",
     "listr2": "^10.0.0",
     "micromatch": "^4.0.8"
